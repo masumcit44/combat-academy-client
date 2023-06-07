@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import "./Navbar.css";
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user,LogOut } = useAuth();
+  const handleLogOut = () =>{
+    LogOut()
+    
+  }
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start hidden lg:flex">
@@ -78,7 +82,7 @@ const Navbar = () => {
                 <img src={user?.photoURL} />
               </div>
             </div>
-            <button className="btn btn-sm btn-accent">LogOut</button>
+            <button onClick={handleLogOut} className="btn btn-sm btn-accent">LogOut</button>
           </>
         ) : (
           <>

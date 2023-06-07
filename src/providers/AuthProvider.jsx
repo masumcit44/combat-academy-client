@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import { useState } from "react";
@@ -35,24 +36,33 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, GoogleProvider);
   };
 
+  const UpdateUserProfile = (name,photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
+
   const LogOut = () => {
     setLoading(true);
     return signOut(auth);
   };
 
-  useEffect(()=>{
-    onAuthStateChanged(auth,(currentUser)=>{
-        setUser(currentUser)
-        console.log(currentUser);
-        setLoading(false)
-    })
-  },[])
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log(currentUser);
+      setLoading(false);
+    });
+  }, []);
 
   const authInfo = {
     user,
     createUser,
     Login,
-    GoogleSignIn
+    GoogleSignIn,
+    LogOut,
+    UpdateUserProfile
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
