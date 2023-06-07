@@ -3,13 +3,15 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaGoogle,FaEye } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import { Result } from "postcss";
-import { updateCurrentUser } from "firebase/auth";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
-  const {createUser,UpdateUserProfile} = useAuth()
+  const {createUser,UpdateUserProfile,GoogleSignIn} = useAuth()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -27,6 +29,25 @@ const SignUp = () => {
         console.log(res.user);
         res.user.displayName = data.name;
         res.user.photoURL = data.photo;
+        const user = {
+          name : data.name,
+          email: data.email,
+          role : "admin"
+        }
+        axios.post("http://localhost:5000/users", user )
+        .then(data=>{
+          console.log(data?.data);
+          if(data?.data.insertedId){
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'user added successfully',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            navigate("/")
+          }
+        })
         UpdateUserProfile(data.name,data.photo)
         .then(()=>{
             console.log("user updated");
@@ -36,6 +57,33 @@ const SignUp = () => {
     .catch(error=>console.log(error))
     
   };
+  const handleGoogleSignIn = () =>{
+    GoogleSignIn()
+    .then(res=>{
+      
+       const user = {
+        name : res.user.displayName,
+        email: res.user.email,
+        role : "admin"
+      }
+      axios.post("http://localhost:5000/users", user )
+      .then(data=>{
+        console.log(data?.data);
+        if(data?.data.insertedId){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'user added successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          navigate("/")
+        }
+      })
+    })
+    .catch(error=>console.log(error))
+    
+  }
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
@@ -147,7 +195,7 @@ const SignUp = () => {
             <div className="mt-6 flex justify-evenly items-center ">
               <button className="btn btn-outline btn-success ">Register</button>
               <p className="text-center">OR</p>
-              <button type="button" className="btn btn-outline btn-circle btn-info text-lime-500 ">
+              <button type="button" onClick={handleGoogleSignIn} className="btn btn-outline btn-circle btn-info text-lime-500 ">
                 <FaGoogle></FaGoogle>
               </button>
             </div>
