@@ -3,7 +3,7 @@ import "./Card.css";
 const Card = ({ card }) => {
   const { _id, image, instructorName, martialArtName, studentsEnrolled } = card;
   return (
-    <div className="card w-80  bg-base-100 shadow-xl">
+    <div className="card w-80 my-4 bg-base-100 shadow-xl">
       <figure>
         <img className="class-img" src={image} alt="Shoes" />
       </figure>

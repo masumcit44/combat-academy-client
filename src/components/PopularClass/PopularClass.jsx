@@ -15,7 +15,7 @@ const PopularClass = () => {
   }, []);
   console.log(popularClass);
   return (
-    <div>
+    <div className="my-4">
       <h2 className="font-bold text-5xl active-url text-center">
         Our Popular Class
       </h2>
