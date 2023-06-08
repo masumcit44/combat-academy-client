@@ -1,4 +1,5 @@
 import React from 'react';
+import ExtraSection from '../../components/ExtraSection/ExtraSection';
 import PopularClass from '../../components/PopularClass/PopularClass';
 import PopularInstructor from '../../components/PopularInstructor/PopularInstructor';
 import TopSlider from '../../components/TopSlider/TopSlider';
@@ -8,7 +9,9 @@ const Home = () => {
         <div>
             {/* <TopSlider></TopSlider> */}
             {/* <PopularClass></PopularClass> */}
-            <PopularInstructor></PopularInstructor>
+            {/* <PopularInstructor></PopularInstructor> */}
+            {/* <ExtraSection></ExtraSection> */}
+            
         </div>
     );
 };
