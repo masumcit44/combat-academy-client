@@ -1,8 +1,9 @@
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MySelectedClassCard = ({ card,refetch }) => {
+const MySelectedClassCard = ({ card, refetch }) => {
   const {
     email,
     image,
@@ -12,17 +13,20 @@ const MySelectedClassCard = ({ card,refetch }) => {
     studentsEnrolled,
     _id,
   } = card;
-  const handleDelete = (_id) =>{
-    fetch(`http://localhost:5000/selectedclass/${_id}`,{
-        method:"DELETE"
+  const handleDelete = (_id) => {
+    fetch(`http://localhost:5000/selectedclass/${_id}`, {
+      method: "DELETE",
     })
-    .then(res=>res.json())
-    .then(data=>{
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        Swal.fire("class deleted successfully")
-        refetch()
-    })
-  }
+        Swal.fire("class deleted successfully");
+        refetch();
+      });
+  };
+  const handleCheck = (id) => {
+    console.log(id);
+  };
   return (
     <tr className="border-y p-5  border-1 border-blue-500">
       <td>
@@ -32,16 +36,26 @@ const MySelectedClassCard = ({ card,refetch }) => {
           </div>
         </div>
       </td>
-      <td>
-      {martialArtName}
-      </td>
+      <td>{martialArtName}</td>
       <td>{instructorName}</td>
       <td>{price}</td>
       <td>
-        <button className="btn btn-primary btn-sm ">Pay</button>
+        <Link to={`/dashboard/payment/${_id}`}>
+          <button
+            onClick={() => handleCheck(_id)}
+            className="btn btn-primary btn-sm"
+          >
+            Pay
+          </button>
+        </Link>
       </td>
       <td>
-        <button onClick={()=>handleDelete(_id)} className="btn btn-primary btn-sm ">Delete</button>
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn btn-primary btn-sm "
+        >
+          Delete
+        </button>
       </td>
     </tr>
   );

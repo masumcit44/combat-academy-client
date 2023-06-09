@@ -19,7 +19,7 @@ const MySelectedClass = () => {
     }
   );
 
-  console.log(selectedClass);
+//   console.log(selectedClass);
 
   return (
     <div>
