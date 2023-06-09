@@ -6,12 +6,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import CheckOutForm from "../../components/CheckOutForm/CheckOutForm";
-const stripePromise = loadStripe(
-    import.meta.env.VITE_Payment_Gateway_PK
-  );
+const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
-    
-  const { id } = useParams();
+  const { id, enrollId } = useParams();
+
   const [card, setCard] = useState({});
   useEffect(() => {
     axios
@@ -25,13 +23,15 @@ const Payment = () => {
       });
   }, [setCard]);
   // console.log(card.price);
-  const {image,martialArtName,instructorName,price} =  card
+  const { image, martialArtName, instructorName, price } = card;
   return (
     <div>
-      <h2 className="font-bold text-5xl active-url text-center">Proceed to checkout </h2>
-      
+      <h2 className="font-bold text-5xl active-url text-center">
+        Proceed to checkout{" "}
+      </h2>
+
       <Elements stripe={stripePromise}>
-        <CheckOutForm price={price} id={id} ></CheckOutForm>
+        <CheckOutForm price={price} id={id} enrollId={enrollId}></CheckOutForm>
       </Elements>
     </div>
   );

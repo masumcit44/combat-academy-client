@@ -4,7 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-const CheckOutForm = ({price,id}) => {
+const CheckOutForm = ({price,id,enrollId}) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -15,7 +15,7 @@ const CheckOutForm = ({price,id}) => {
   const [axiosSecure] = useAxiosSecure();
   useEffect(() => {
 if(price==undefined ) return;
-    console.log(price);
+
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
       // console.log(res.data.clientSecret);
       setClinetSecret(res.data.clientSecret);
@@ -73,6 +73,7 @@ if(price==undefined ) return;
           transactionId,
           price,
           selectedId : id,
+          enrollId : enrollId,
           date:new Date(),
           
         };
@@ -83,6 +84,10 @@ if(price==undefined ) return;
              Swal.fire("payment succesfull")
           }
         })
+        // axiosSecure.patch("/payments",payment)
+        // .then(res=>{
+        //   console.log(res.data);
+        // })
       }
 
     

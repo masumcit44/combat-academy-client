@@ -4,8 +4,9 @@ import Swal from "sweetalert2";
 import "./ClassCard";
 
 const ClassCard = ({ singleClass, user, loggedUser }) => {
-  const { image, instructorName, martialArtName, studentsEnrolled, price } =
+  const { image, instructorName, martialArtName, studentsEnrolled, price ,_id } =
     singleClass;
+    
   const availableSeats = 50 - parseInt(studentsEnrolled);
 
   const [isEnrollDisabled, setIsEnrollDisabled] = useState(false);
@@ -16,6 +17,7 @@ const ClassCard = ({ singleClass, user, loggedUser }) => {
     martialArtName,
     studentsEnrolled,
     price,
+    enrollId : _id,
     email: user.email,
   };
 

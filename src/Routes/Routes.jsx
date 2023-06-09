@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         element: <MySelectedClass></MySelectedClass>,
       },
       {
-        path: "payment/:id",
+        path: "payment/:id/:enrollId",
         element: <Payment></Payment>,
       },
     ],

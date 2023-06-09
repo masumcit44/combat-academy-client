@@ -10,6 +10,7 @@ const MySelectedClassCard = ({ card, refetch }) => {
     instructorName,
     martialArtName,
     price,
+    enrollId,
     studentsEnrolled,
     _id,
   } = card;
@@ -40,7 +41,7 @@ const MySelectedClassCard = ({ card, refetch }) => {
       <td>{instructorName}</td>
       <td>{price}</td>
       <td>
-        <Link to={`/dashboard/payment/${_id}`}>
+        <Link to={`/dashboard/payment/${_id}/${enrollId}`}>
           <button
             onClick={() => handleCheck(_id)}
             className="btn btn-primary btn-sm"
