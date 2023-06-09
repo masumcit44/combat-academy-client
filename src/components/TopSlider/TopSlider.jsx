@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import "./TopSlider.css";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal";
+import useSlider from "../../hooks/useSlider";
 
 // Install Swiper modules
 SwiperCore.use([EffectFade, Navigation, Pagination, Autoplay]);
@@ -20,6 +21,8 @@ SwiperCore.use([EffectFade, Navigation, Pagination, Autoplay]);
 const TopSlider = () => {
   const [slider, setSlider] = useState([]);
 
+
+  
   useEffect(() => {
     axios.get("http://localhost:5000/topslider").then((response) => {
       setSlider(response.data);
