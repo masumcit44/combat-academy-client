@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import Class from "../pages/Class/Class";
 import Home from "../pages/Home/Home";
 import Instructor from "../pages/Instructor/Instructor";
 import Login from "../pages/Login/Login";
+import MySelectedClass from "../pages/MySelectedClass/MySelectedClass";
 import SignUp from "../pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
@@ -33,4 +35,18 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "dashboard",
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+        path: "", // Empty path matches the /dashboard route
+        element: <MySelectedClass />,
+      },
+      {
+        path:"selectedclass",
+        element:<MySelectedClass></MySelectedClass>
+      }
+    ]
+  }
 ]);

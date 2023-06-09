@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import "./ClassCard";
@@ -9,11 +10,36 @@ const ClassCard = ({ singleClass, user, loggedUser }) => {
 
   const [isEnrollDisabled, setIsEnrollDisabled] = useState(false);
 
+  const selectedClass = {
+    image,
+    instructorName,
+    martialArtName,
+    studentsEnrolled,
+    price,
+    email: user.email,
+  };
+
   const handleEnroll = () => {
     if (!user) {
       Swal.fire("Please Login First");
       return;
     }
+    console.log(selectedClass);
+
+    fetch("http://localhost:5000/selectedclass", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(selectedClass),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if(data.insertedId){
+          Swal.fire("Class had added");
+        }
+      });
   };
 
   useEffect(() => {
@@ -26,7 +52,10 @@ const ClassCard = ({ singleClass, user, loggedUser }) => {
     }
   }, [loggedUser]);
 
-  const cardClassName = availableSeats === 0 ? " p-5 card card-compact w-96 bg-red-300 shadow-xl" : "p-5 card card-compact w-96 bg-base-100 shadow-xl";
+  const cardClassName =
+    availableSeats === 0
+      ? " p-5 card card-compact w-96 bg-red-300 shadow-xl"
+      : "p-5 card card-compact w-96 bg-base-100 shadow-xl";
 
   return (
     <div className={cardClassName}>
@@ -35,9 +64,19 @@ const ClassCard = ({ singleClass, user, loggedUser }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">Martial Art Name: {martialArtName}</h2>
-        <h3 className="text-base font-bold">Instructor Name: {instructorName}</h3>
-        <p>Available Seats: <span className="text-base font-bold text-red-700">{availableSeats}</span> </p>
-        <p>Course Cost: <span className="text-base font-bold text-red-700">{price}</span></p>
+        <h3 className="text-base font-bold">
+          Instructor Name: {instructorName}
+        </h3>
+        <p>
+          Available Seats:{" "}
+          <span className="text-base font-bold text-red-700">
+            {availableSeats}
+          </span>{" "}
+        </p>
+        <p>
+          Course Cost:{" "}
+          <span className="text-base font-bold text-red-700">{price}</span>
+        </p>
         <div className="card-actions justify-end">
           <button
             onClick={() => handleEnroll()}

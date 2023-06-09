@@ -11,7 +11,6 @@ const Class = () => {
       setClasses(res.data);
     });
   }, [axiosSecure]);
-  console.log(classes);
   const { user } = useAuth();
 
   const [loggedUser, setLoggedUser] = useState([]);
@@ -20,7 +19,6 @@ if (user?.email ==undefined ) return;
     fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setLoggedUser(data)
       });
   }, [user?.email]);
