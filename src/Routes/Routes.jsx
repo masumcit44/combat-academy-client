@@ -2,13 +2,15 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import Class from "../pages/Class/Class";
+import EnrolledClass from "../pages/EntrolledClass/EnrolledClass";
 import Home from "../pages/Home/Home";
 import Instructor from "../pages/Instructor/Instructor";
 import Login from "../pages/Login/Login";
 import MySelectedClass from "../pages/MySelectedClass/MySelectedClass";
 import Payment from "../pages/Payment/Payment";
 import SignUp from "../pages/SignUp/SignUp";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "selectedclass",
         element: <MySelectedClass></MySelectedClass>,
+      },
+      {
+        path: "enrolledclass",
+        element: <EnrolledClass></EnrolledClass>,
       },
       {
         path: "payment/:id/:enrollId",
