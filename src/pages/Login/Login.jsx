@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaGoogle,FaEye } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
-import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [error, setError] = useState("");

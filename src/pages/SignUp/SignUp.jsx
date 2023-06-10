@@ -32,7 +32,7 @@ const SignUp = () => {
         const user = {
           name: data.name,
           email: data.email,
-          role: "student",
+          role: "instructor",
         };
         axios.post("http://localhost:5000/users", user).then((data) => {
           console.log(data?.data);

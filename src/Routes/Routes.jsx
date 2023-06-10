@@ -11,6 +11,7 @@ import Payment from "../pages/Payment/Payment";
 import SignUp from "../pages/SignUp/SignUp";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PaymentHistory from "../pages/paymentHistory/PaymentHistory";
+import AddClass from "../pages/AddClass/AddClass";
 const queryClient = new QueryClient();
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "enrolledclass",
         element: <EnrolledClass></EnrolledClass>,
+      },
+      {
+        path: "addclass",
+        element: <AddClass></AddClass>,
       },
       {
         path: "paymenthistory",
