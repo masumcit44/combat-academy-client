@@ -7,7 +7,7 @@ import useInstructor from "../hooks/useInstructor";
 const Dashboard = () => {
   const [student] = useStudent()
   const [instructor] = useInstructor()
-  console.log(instructor);
+  // console.log(instructor);
   const studentRoute = (
     <>
       <li>
