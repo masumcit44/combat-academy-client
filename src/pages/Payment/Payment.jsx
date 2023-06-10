@@ -29,9 +29,9 @@ const Payment = () => {
       <h2 className="font-bold text-5xl active-url text-center">
         Proceed to checkout{" "}
       </h2>
-
+      
       <Elements stripe={stripePromise}>
-        <CheckOutForm price={price} id={id} enrollId={enrollId}></CheckOutForm>
+        <CheckOutForm price={price} id={id} enrollId={enrollId} selectedClass={card} ></CheckOutForm>
       </Elements>
     </div>
   );

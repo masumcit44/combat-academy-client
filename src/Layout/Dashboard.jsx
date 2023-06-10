@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { FaHome, FaBook, FaCreditCard } from "react-icons/fa";
+import { FaHome, FaBook, FaCreditCard, FaHistory } from "react-icons/fa";
 import { BsCheckCircle } from "react-icons/bs";
 import useStudent from "../hooks/useStudent";
 const Dashboard = () => {
-    // const [student] = useStudent()
+  // const [student] = useStudent()
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -36,29 +36,20 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/enrolledclass">
-                <FaCreditCard></FaCreditCard>
-                Payment Option
+              <Link to="/dashboard/paymenthistory">
+                <FaHistory></FaHistory>
+                Payment History
               </Link>
             </li>
             <div className="divider"></div>
             <li>
-              <Link to="/dashboard/selectedclass">
-                <BsCheckCircle></BsCheckCircle>
-                My Selected Class
-              </Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/dashboard/enrolledclass">
-                <FaBook></FaBook>
-                My Enrolled Class
-              </Link>
+              <Link to="/instructor">Instructor</Link>
             </li>
             <li>
-              <Link to="/dashboard/enrolledclass">
-                <FaCreditCard></FaCreditCard>
-                Payment Option
-              </Link>
+              <Link to="/classes">Classes</Link>
             </li>
           </ul>
         </div>

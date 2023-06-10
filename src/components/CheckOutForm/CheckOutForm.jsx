@@ -4,7 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-const CheckOutForm = ({price,id,enrollId}) => {
+const CheckOutForm = ({price,id,enrollId,selectedClass}) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -61,13 +61,13 @@ if(price==undefined ) return;
       if (confirmError) {
         console.log(confirmError);
       }
-      console.log("payment intent", paymentIntent);
+      // console.log("payment intent", paymentIntent);
       setProcessing(false);
-      
       if (paymentIntent.status == "succeeded") {
         setTransactionId(paymentIntent.id);
         const transactionId = paymentIntent.id;
         // save payment information to the server
+        // console.log(selectedClass);
         const payment = {
           email: user?.email,
           transactionId,
@@ -75,19 +75,18 @@ if(price==undefined ) return;
           selectedId : id,
           enrollId : enrollId,
           date:new Date(),
-          
+          image: card.image,
+          instructorName: selectedClass?.instructorName,
+          martialArtName: selectedClass?.martialArtName,
+          studentsEnrolled: selectedClass?.studentsEnrolled
         };
         axiosSecure.post("/payments",payment)
         .then(res=>{
-          console.log(res.data);
+          // console.log(res.data);
           if(res.data.insertResult.insertedId){
              Swal.fire("payment succesfull")
           }
         })
-        // axiosSecure.patch("/payments",payment)
-        // .then(res=>{
-        //   console.log(res.data);
-        // })
       }
 
     
