@@ -39,6 +39,7 @@ const InstructorAddedClass = () => {
               <th>Instructor Name</th>
               <th>Total Enrolled Students</th>
               <th>Price</th>
+              <th>status</th>
               <th>Feedback</th>
               <th>Action</th>
             </tr>

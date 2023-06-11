@@ -15,6 +15,7 @@ const InstructorAddedClassCard = ({card}) => {
       <td>{instructorName}</td>
       <td>{studentsEnrolled}</td>
       <td>${price}</td>
+      <td className="text-black font-bold bg-yellow-500 p-4" >{status}</td>
       <td>"TODO"</td>
       <td><button className="btn btn-primary btn-sm">update</button></td>
     </tr>

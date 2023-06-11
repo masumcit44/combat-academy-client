@@ -13,6 +13,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PaymentHistory from "../pages/paymentHistory/PaymentHistory";
 import AddClass from "../pages/AddClass/AddClass";
 import InstructorAddedClass from "../pages/InstructorAddedClass/InstructorAddedClass";
+import PrivateRoute from "./PrivateRoute";
+import ManageClass from "../pages/ManageClass/ManageClass";
 const queryClient = new QueryClient();
 export const router = createBrowserRouter([
   {
@@ -43,8 +45,9 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
+      // normal student route
       {
         path: "", // Empty path matches the /dashboard route
         element: <MySelectedClass />,
@@ -58,6 +61,11 @@ export const router = createBrowserRouter([
         element: <EnrolledClass></EnrolledClass>,
       },
       {
+        path: "payment/:id/:enrollId",
+        element: <Payment></Payment>,
+      },
+      // instructor route
+      {
         path: "addclass",
         element: <AddClass></AddClass>,
       },
@@ -65,14 +73,14 @@ export const router = createBrowserRouter([
         path: "myclass",
         element: <InstructorAddedClass></InstructorAddedClass>,
       },
+
+      // admin route
       {
-        path: "paymenthistory",
-        element: <PaymentHistory></PaymentHistory>,
-      },
-      {
-        path: "payment/:id/:enrollId",
-        element: <Payment></Payment>,
-      },
+        path: "manageclass",
+        element:<ManageClass></ManageClass>
+      }
+      
+      
     ],
   },
 ]);

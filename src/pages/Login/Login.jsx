@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaGoogle,FaEye } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
   const {  GoogleSignIn ,Login} = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+const from = location.state?.from?.pathname || "/"
   const {
     register,
     handleSubmit,
@@ -21,7 +23,7 @@ const Login = () => {
     Login(data.email,data.password)
     .then(res=>{
         console.log(res.user);
-        navigate("/")
+        navigate(from,{replace:true})
     })
     .catch(error=>{
         setError(error.message)
