@@ -16,7 +16,6 @@ const SingleInstructor = ({ instructor }) => {
           <h2 className="font-semibold" >
             Instructor Email :  {email}
           </h2>
-          <p>Number of class taken : 1 </p>
           </div>
         </div>
       </div>

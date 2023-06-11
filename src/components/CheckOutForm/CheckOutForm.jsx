@@ -82,7 +82,7 @@ if(price==undefined ) return;
         };
         axiosSecure.post("/payments",payment)
         .then(res=>{
-          // console.log(res.data);
+          console.log(res.data);
           if(res.data.insertResult.insertedId){
              Swal.fire("payment succesfull")
           }
@@ -93,14 +93,14 @@ if(price==undefined ) return;
     
   }
   return (
-    <div className="my-5">
+    <div className="my-5 bg-amber-100">
       <>
-        <form className="w-2/3 m-8"  onSubmit={handleSubmit}>
+        <form className=" m-8  p-5  rounded-md "  onSubmit={handleSubmit}>
           <CardElement
             options={{
               style: {
                 base: {
-                  fontSize: "16px",
+                  fontSize: "24px",
                   color: "#424770",
                   "::placeholder": {
                     color: "#aab7c4",
@@ -122,7 +122,7 @@ if(price==undefined ) return;
         </form>
         {cardError && <p className="text-red-600 ml-8">{cardError.message}</p>}
         {transactionId && (
-          <p className="text-green-600 ml-8">
+          <p className="text-green-800 font-bold text-xl text-center">
             Transaction completed with transactionId : {transactionId}{" "}
           </p>
         )}

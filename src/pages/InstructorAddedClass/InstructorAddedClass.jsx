@@ -8,10 +8,11 @@ import InstructorAddedClassCard from './InstructorAddedClassCard';
 const InstructorAddedClass = () => {
   const [addedClass, setAddedClass] = useState([]);
   const { user } = useAuth();
-
+  
   useEffect(() => {
+    if(!user) return 
     axios
-      .get(`http://localhost:5000/myclass?${user?.email}`)
+      .get(`http://localhost:5000/myclass?email=${user?.email}`)
       .then(res => {
         setAddedClass(res.data);
       })
@@ -19,9 +20,9 @@ const InstructorAddedClass = () => {
         
         console.log(error);
       });
-  }, []); 
+  }, [user]); 
 
-  console.log(addedClass);
+  // console.log(user?.email);
 
   return (
     <div>

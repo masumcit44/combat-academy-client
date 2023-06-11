@@ -11,7 +11,7 @@ const Instructor = () => {
       setInstructors(res.data);
     });
   }, [axiosSecure]);
-  console.log(instructors);
+  // console.log(instructors);
   return <div>
     {
         instructors.map(instructor=><SingleInstructor

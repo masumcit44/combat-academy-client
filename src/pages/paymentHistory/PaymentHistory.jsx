@@ -19,7 +19,7 @@ const PaymentHistory = () => {
         setPaymentHistory(sortedHistory);
       });
   }, [user]);
-
+   console.log(paymentHistory);
   return (
     <div>
       <h2 className="font-bold text-5xl active-url text-center">

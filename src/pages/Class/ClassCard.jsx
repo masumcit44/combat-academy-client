@@ -18,7 +18,7 @@ const ClassCard = ({ singleClass, user, loggedUser }) => {
     studentsEnrolled,
     price,
     enrollId : _id,
-    email: user.email,
+    email: user?.email,
   };
 
   const handleEnroll = () => {

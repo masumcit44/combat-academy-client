@@ -82,7 +82,7 @@ const ManageClassCard = ({ card, refetch }) => {
           Deny
         </button>
 
-        <button className="btn btn-sm btn-primary" onClick={openModal}>
+        <button disabled={status === "approved"} className="btn btn-sm btn-primary" onClick={openModal}>
           Feedback
         </button>
         <dialog ref={modalRef} className="modal">

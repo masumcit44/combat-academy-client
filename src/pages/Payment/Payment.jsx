@@ -25,7 +25,7 @@ const Payment = () => {
   // console.log(card.price);
   const { image, martialArtName, instructorName, price } = card;
   return (
-    <div>
+    <div className="">
       <h2 className="font-bold text-5xl active-url text-center">
         Proceed to checkout{" "}
       </h2>

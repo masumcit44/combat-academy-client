@@ -17,4 +17,6 @@
  - json web token
 
 <!-- TODO: -->
+- admin email : checkph@gmail.com
+- admin password : Phero@001
 live site Link : 
