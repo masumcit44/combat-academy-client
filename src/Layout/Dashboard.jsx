@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaBook, FaCreditCard, FaHistory } from "react-icons/fa";
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { AiFillSchedule } from "react-icons/ai";
 import { BsCheckCircle } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
@@ -50,7 +51,7 @@ const Dashboard = () => {
     <>
       <li>
         <Link to="/dashboard/addclass">
-          <BsCheckCircle></BsCheckCircle>
+          <AiOutlinePlusCircle></AiOutlinePlusCircle>
           Add a Class
         </Link>
       </li>
@@ -58,12 +59,6 @@ const Dashboard = () => {
         <Link to="/dashboard/myclass">
           <FaBook></FaBook>
           My  Class
-        </Link>
-      </li>
-      <li>
-        <Link to="/dashboard/paymenthistory">
-          <FaHistory></FaHistory>
-          Payment History
         </Link>
       </li>
     </>

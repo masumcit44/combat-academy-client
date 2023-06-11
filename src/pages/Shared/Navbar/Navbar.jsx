@@ -2,16 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import "./Navbar.css";
-const Navbar = () => {
-  const { user,LogOut } = useAuth();
-  const handleLogOut = () =>{
-    LogOut()
-    
-  }
+const Navbar = ({ toggleTheme, buttonLabel }) => {
+  const { user, LogOut } = useAuth();
+  const handleLogOut = () => {
+    LogOut();
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 active-url text-xl  ">
+        <ul className="menu items-center menu-horizontal px-1 active-url text-xl  ">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -26,6 +25,11 @@ const Navbar = () => {
               <Link to="/dashboard">Dashboard</Link>
             </li>
           )}
+          <li>
+            <button onClick={toggleTheme} className="btn btn-sm btn-accent">
+              Toggle {buttonLabel} Theme
+            </button>
+          </li>
         </ul>
       </div>
       <div className="navbar-center">
@@ -82,11 +86,15 @@ const Navbar = () => {
                 <img src={user?.photoURL} />
               </div>
             </div>
-            <button onClick={handleLogOut} className="btn btn-sm btn-accent">LogOut</button>
+            <button onClick={handleLogOut} className="btn btn-sm btn-accent">
+              LogOut
+            </button>
           </>
         ) : (
           <>
-          <Link to="/login" ><button className="btn btn-sm btn-accent">Login</button></Link>
+            <Link to="/login">
+              <button className="btn btn-sm btn-accent">Login</button>
+            </Link>
           </>
         )}
       </div>

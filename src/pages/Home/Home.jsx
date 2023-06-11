@@ -7,10 +7,10 @@ import TopSlider from '../../components/TopSlider/TopSlider';
 const Home = () => {
     return (
         <div>
-            {/* <TopSlider></TopSlider> */}
-            {/* <PopularClass></PopularClass> */}
+            <TopSlider></TopSlider>
+            <PopularClass></PopularClass>
             <PopularInstructor></PopularInstructor>
-            {/* <ExtraSection></ExtraSection> */}
+            <ExtraSection></ExtraSection>
             
         </div>
     );
