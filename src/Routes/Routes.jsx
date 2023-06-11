@@ -9,14 +9,14 @@ import Login from "../pages/Login/Login";
 import MySelectedClass from "../pages/MySelectedClass/MySelectedClass";
 import Payment from "../pages/Payment/Payment";
 import SignUp from "../pages/SignUp/SignUp";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import PaymentHistory from "../pages/paymentHistory/PaymentHistory";
 import AddClass from "../pages/AddClass/AddClass";
 import InstructorAddedClass from "../pages/InstructorAddedClass/InstructorAddedClass";
 import PrivateRoute from "./PrivateRoute";
 import ManageClass from "../pages/ManageClass/ManageClass";
 import DashboardHome from "../pages/DashboardHome/DashboardHome";
-const queryClient = new QueryClient();
+
+import ManageUser from "../pages/ManageUser/ManageUser";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -79,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path: "manageclass",
         element:<ManageClass></ManageClass>
+      },
+      {
+        path:"manageuser",
+        element:<ManageUser></ManageUser> 
       }
       
       
