@@ -1,0 +1,36 @@
+.error-bg {
+    background-image: url("https://img.freepik.com/free-vector/error-404-concept-illustration_114360-1811.jpg?w=996&t=st=1686490806~exp=1686491406~hmac=86c8ed05bc4d4c7cd05e92e60fe2265e70315ddda124fda15f3a96086951e52b");
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+   
+   
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+  
+  .error-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: -1;
+  }
+  
+  .error-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+    z-index: -1;
+  }
+  
+  

@@ -18,11 +18,13 @@ import DashboardHome from "../pages/DashboardHome/DashboardHome";
 import ManageUser from "../pages/ManageUser/ManageUser";
 import AdminRoute from "./adminRoute";
 import InstructorRoute from "./instructorRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

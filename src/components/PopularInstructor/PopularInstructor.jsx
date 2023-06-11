@@ -14,14 +14,13 @@ const PopularInstructor = () => {
     });
   }, []);
 
-
   const images = instructors.map((instructor, index) => ({
     src: instructor.image,
     width: 1,
     height: 1,
     title: `${instructor.martialArtName} - ${instructor.instructorName}`,
     caption: `Students Enrolled: ${instructor.studentsEnrolled}`,
-    key: index,
+    key: String(index), // Convert index to a string
   }));
 
   return (
@@ -29,7 +28,7 @@ const PopularInstructor = () => {
       <h2 className="font-bold text-5xl active-url text-center my-2">
         Introducing Our Instructors
       </h2>
-      <Gallery photos={images}  />
+      <Gallery photos={images} />
     </div>
   );
 };
