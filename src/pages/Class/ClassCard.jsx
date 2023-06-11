@@ -8,7 +8,7 @@ const ClassCard = ({ singleClass, user, loggedUser }) => {
     singleClass;
     
   const availableSeats = 50 - parseInt(studentsEnrolled);
-
+  
   const [isEnrollDisabled, setIsEnrollDisabled] = useState(false);
 
   const selectedClass = {

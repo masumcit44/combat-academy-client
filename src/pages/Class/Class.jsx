@@ -22,6 +22,7 @@ if (user?.email ==undefined ) return;
         setLoggedUser(data)
       });
   }, [user?.email]);
+
   return (
     <div className="flex flex-col items-center">
       <h2 className="font-bold text-5xl active-url text-center">Our Classes</h2>

@@ -1,7 +1,9 @@
+import axios from "axios";
 import React from "react";
 
 const EnrolledClassCard = ({ card }) => {
   const { email, image, instructorName, martialArtName, price } = card;
+  
   return (
     <tr className="border-y p-5  border-1 border-blue-500">
       <td>

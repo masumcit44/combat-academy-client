@@ -3,15 +3,16 @@ import { useQuery, QueryClientProvider, QueryClient } from "react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import ManageClassCard from "./ManageClassCard";
 
+
 const queryClient = new QueryClient();
 
 const ManageClass = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { data: addedClass = [], isLoading: addedClassLoading } = useQuery(
+  const { data: addedClass = [], refetch } = useQuery(
     "addedClass",
     async () => {
       const res = await axiosSecure.get("/allclasses");
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     }
   );
@@ -38,10 +39,7 @@ const ManageClass = () => {
             </thead>
             <tbody className="p-5">
               {addedClass.map((single) => (
-                <ManageClassCard
-                key={single._id}
-                card={single}
-                ></ManageClassCard>
+                <ManageClassCard key={single._id} card={single} refetch={refetch} />
               ))}
             </tbody>
           </table>

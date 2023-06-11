@@ -15,6 +15,7 @@ import AddClass from "../pages/AddClass/AddClass";
 import InstructorAddedClass from "../pages/InstructorAddedClass/InstructorAddedClass";
 import PrivateRoute from "./PrivateRoute";
 import ManageClass from "../pages/ManageClass/ManageClass";
+import DashboardHome from "../pages/DashboardHome/DashboardHome";
 const queryClient = new QueryClient();
 export const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ export const router = createBrowserRouter([
       // normal student route
       {
         path: "", // Empty path matches the /dashboard route
-        element: <MySelectedClass />,
+        element: <DashboardHome />,
       },
       {
         path: "selectedclass",
