@@ -1,7 +1,7 @@
 import React from "react";
 
 const InstructorAddedClassCard = ({card}) => {
-    const {_id,studentsEnrolled,status,price,martialArtName,instructorName,instructorEmail,image,availableSeats} = card
+    const {_id,studentsEnrolled,status,price,martialArtName,instructorName,instructorEmail,image,availableSeats,feedback} = card
   return (
     <tr className="border-y p-5  border-1 border-blue-500">
       <td>
@@ -16,7 +16,7 @@ const InstructorAddedClassCard = ({card}) => {
       <td>{studentsEnrolled}</td>
       <td>${price}</td>
       <td className="text-black font-bold bg-yellow-500 p-4" >{status}</td>
-      <td>"TODO"</td>
+      <td>{feedback}</td>
       <td><button className="btn btn-primary btn-sm">update</button></td>
     </tr>
   );
