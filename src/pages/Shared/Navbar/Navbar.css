@@ -13,3 +13,14 @@
   font-family: "Bagel Fat One", cursive;
   font-family: "Diphylleia", serif;
 }
+.navbar-responsive{
+  
+}
+@media (max-width: 768px) {
+  .navbar-responsive{
+    width: 100vw;
+  }
+  .normal-case{
+    padding: 0;
+  }
+}

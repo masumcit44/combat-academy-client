@@ -13,13 +13,13 @@ const PopularClass = () => {
       setPopularClass(sortedClasses);
     });
   }, []);
-  console.log(popularClass);
+  // console.log(popularClass);
   return (
     <div className="my-4">
       <h2 className="font-bold text-5xl active-url text-center">
         Our Popular Class
       </h2>
-      <div className="grid md:grid-cols-3 gap-4 ">
+      <div className="grid items-center justify-center md:grid-cols-3 gap-4 ">
         {popularClass.map((card) => (
           <Card key={card._id} card={card}></Card>
         ))}

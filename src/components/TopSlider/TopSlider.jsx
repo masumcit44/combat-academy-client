@@ -29,7 +29,7 @@ const TopSlider = () => {
     });
   }, []);
 
-  console.log(slider);
+  // console.log(slider);
 
   return (
     <Swiper

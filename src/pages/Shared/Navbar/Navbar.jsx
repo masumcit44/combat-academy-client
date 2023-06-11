@@ -8,7 +8,7 @@ const Navbar = ({ toggleTheme, buttonLabel }) => {
     LogOut();
   };
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar navbar-responsive bg-base-100">
       <div className="navbar-start hidden lg:flex">
         <ul className="menu items-center menu-horizontal px-1 active-url text-xl  ">
           <li>
@@ -55,25 +55,27 @@ const Navbar = ({ toggleTheme, buttonLabel }) => {
             className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
-            </li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/instructor">Instructor</Link>
+          </li>
+          <li>
+            <Link to="/classes">Classes</Link>
+          </li>
+          {user && (
             <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+          )}
+          <li>
+            <button onClick={toggleTheme} className="btn btn-sm sm:btn-xs btn-accent">
+              Toggle {buttonLabel} Theme
+            </button>
+          </li>
           </ul>
         </div>
-        <h2 className="btn btn-ghost normal-case text-xl website-name bg-amber-600 ">
+        <h2 className="btn btn-ghost normal-case  text-xl website-name bg-amber-600 ">
           Combat Academy
         </h2>
       </div>
@@ -86,14 +88,14 @@ const Navbar = ({ toggleTheme, buttonLabel }) => {
                 <img src={user?.photoURL} />
               </div>
             </div>
-            <button onClick={handleLogOut} className="btn btn-sm btn-accent">
+            <button onClick={handleLogOut} className="btn btn-xs btn-accent">
               LogOut
             </button>
           </>
         ) : (
           <>
             <Link to="/login">
-              <button className="btn btn-sm btn-accent">Login</button>
+              <button className="btn btn-xs btn-accent">Login</button>
             </Link>
           </>
         )}
