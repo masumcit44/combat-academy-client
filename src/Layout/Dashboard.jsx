@@ -7,12 +7,23 @@ import { BiUser } from "react-icons/bi";
 import useStudent from "../hooks/useStudent";
 import useInstructor from "../hooks/useInstructor";
 import useAdmin from "../hooks/useAdmin";
+import useAuth from "../hooks/useAuth";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 const Dashboard = () => {
   const [student] = useStudent()
   // const [instructor] = useInstructor()
-  const [admin] = useAdmin()
-  // console.log(admin);
-  // console.log(instructor);
+  // const [admin] = useAdmin()
+  const {user} = useAuth()
+  const [checkUser,setCheckUser] = useState("")
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/checkuser?email=${user?.email}`).
+    then(res=>{
+      setCheckUser(res.data.role)
+    })
+  },[user])
+  // console.log(checkUser);
   const studentRoute = (
     <>
       <li>
@@ -92,14 +103,14 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu bg-amber-300 text-base font-semibold p-4 w-80 h-full  text-base-content">
             
-            {/* {
-              student?.user && studentRoute
+            {
+              checkUser=="student" && studentRoute
             }
             {
-              instructor?.user && instructorRoute
-            } */}
+              checkUser=="instructor" && instructorRoute
+            }
             {
-              admin?.user && adminRoute
+              checkUser=="admin" && adminRoute
             }
             <div className="divider"></div>
             <li>
