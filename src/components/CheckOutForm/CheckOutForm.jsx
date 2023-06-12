@@ -39,7 +39,7 @@ if(price==undefined ) return;
     });
 
     if (error) {
-      console.log("error", error);
+      // console.log("error", error);
       setCardError(error.message);
     } else {
       setCardError("");
@@ -59,7 +59,7 @@ if(price==undefined ) return;
       });
 
       if (confirmError) {
-        console.log(confirmError);
+        // console.log(confirmError);
       }
       // console.log("payment intent", paymentIntent);
       setProcessing(false);
@@ -82,7 +82,7 @@ if(price==undefined ) return;
         };
         axiosSecure.post("/payments",payment)
         .then(res=>{
-          console.log(res.data);
+          // console.log(res.data);
           if(res.data.insertResult.insertedId){
              Swal.fire("payment succesfull")
           }

@@ -16,7 +16,7 @@ const Class = () => {
   const [loggedUser, setLoggedUser] = useState([]);
   useEffect(() => {
 if (user?.email ==undefined ) return;
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://combat-academy-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setLoggedUser(data)

@@ -12,7 +12,7 @@ const ManageClass = () => {
     "addedClass",
     async () => {
       const res = await axiosSecure.get("/allclasses");
-      // console.log(res.data);
+      console.log(res.data);
       return res.data;
     }
   );

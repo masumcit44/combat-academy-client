@@ -24,7 +24,7 @@ const TopSlider = () => {
 
   
   useEffect(() => {
-    axios.get("http://localhost:5000/topslider").then((response) => {
+    axios.get("https://combat-academy-server.vercel.app/topslider").then((response) => {
       setSlider(response.data);
     });
   }, []);

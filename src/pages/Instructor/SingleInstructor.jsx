@@ -1,13 +1,13 @@
 import React from "react";
 import "./Instructor.css";
 const SingleInstructor = ({ instructor }) => {
-  const { email, image, instructorName, martialArtName, studentsEnrolled } =
+  const { email,  instructorImage, instructorName, martialArtName, studentsEnrolled } =
     instructor;
   return (
     <div className="  bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
         <img
-          src={image}
+          src={instructorImage}
           className="Instructor-image rounded-lg shadow-2xl w-1/3  "
         />
         <div className="flex-1 ">

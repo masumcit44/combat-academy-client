@@ -16,8 +16,8 @@ const AddClass = () => {
     event.preventDefault();
     data.status = "pending";
     data.studentsEnrolled = 0;
-    console.log(data);
-    axios.post("http://localhost:5000/addclass", data).then((res) => {
+    // console.log(data);
+    axios.post("https://combat-academy-server.vercel.app/addclass", data).then((res) => {
       // console.log(res.data);
       if (res.data.insertedId) {
         Swal.fire("added class successfully , status is pending");
@@ -77,6 +77,18 @@ const AddClass = () => {
               defaultValue={user?.email}
               className="input input-bordered"
               {...register("instructorEmail", { required: true })}
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Instructor Image</span>
+            </label>
+
+            <input
+              type="text"
+              placeholder="Image"
+              className="input input-bordered"
+              {...register("instructorImage", { required: true })}
             />
           </div>
           <div className="form-control">

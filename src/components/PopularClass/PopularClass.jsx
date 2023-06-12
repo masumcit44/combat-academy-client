@@ -6,7 +6,7 @@ import Card from "./Card";
 const PopularClass = () => {
   const [popularClass, setPopularClass] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/popularclass").then((res) => {
+    axios.get("https://combat-academy-server.vercel.app/popularclass").then((res) => {
       const sortedClasses = res.data.sort(
         (a, b) => b.studentsEnrolled - a.studentsEnrolled
       );

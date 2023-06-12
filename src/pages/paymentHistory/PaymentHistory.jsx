@@ -13,13 +13,13 @@ const PaymentHistory = () => {
   useEffect(() => {
     // if (!user) return;
     axios
-      .get(`http://localhost:5000/paymenthistory?email=${user?.email}`)
+      .get(`https://combat-academy-server.vercel.app/paymenthistory?email=${user?.email}`)
       .then((res) => {
         const sortedHistory = res.data.sort((a, b) => new Date(b.date) - new Date(a.date));
         setPaymentHistory(sortedHistory);
       });
   }, [user]);
-   console.log(paymentHistory);
+  //  console.log(paymentHistory);
   return (
     <div>
       <h2 className="font-bold text-5xl active-url text-center">

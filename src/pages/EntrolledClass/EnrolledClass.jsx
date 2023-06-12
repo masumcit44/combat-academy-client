@@ -14,7 +14,7 @@ const EnrolledClass = () => {
   useEffect(() => {
     if (!user) return;
     axios
-      .get(`http://localhost:5000/enrolledclass?email=${user?.email}`)
+      .get(`https://combat-academy-server.vercel.app/enrolledclass?email=${user?.email}`)
       .then((res) => {
         setEnrolledClass(res.data)
       });

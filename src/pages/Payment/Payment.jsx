@@ -13,13 +13,13 @@ const Payment = () => {
   const [card, setCard] = useState({});
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/selectedclass/${id}`)
+      .get(`https://combat-academy-server.vercel.app/selectedclass/${id}`)
       .then((res) => {
         // console.log(res.data);
         setCard(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }, [setCard]);
   // console.log(card.price);

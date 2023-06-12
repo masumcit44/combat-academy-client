@@ -19,10 +19,10 @@ const from = location.state?.from?.pathname || "/"
   } = useForm();
   const onSubmit = (data) => {
     setError("");
-    console.log(data);
+    // console.log(data);
     Login(data.email,data.password)
     .then(res=>{
-        console.log(res.user);
+        // console.log(res.user);
         navigate(from,{replace:true})
     })
     .catch(error=>{

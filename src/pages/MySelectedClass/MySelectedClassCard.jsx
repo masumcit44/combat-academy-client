@@ -15,18 +15,18 @@ const MySelectedClassCard = ({ card, refetch }) => {
     _id,
   } = card;
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/selectedclass/${_id}`, {
+    fetch(`https://combat-academy-server.vercel.app/selectedclass/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         Swal.fire("class deleted successfully");
         refetch();
       });
   };
   const handleCheck = (id) => {
-    console.log(id);
+    // console.log(id);
   };
   return (
     <tr className="border-y p-5  border-1 border-blue-500">

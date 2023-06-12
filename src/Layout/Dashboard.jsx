@@ -19,7 +19,7 @@ const Dashboard = () => {
   const {user} = useAuth()
   const [checkUser,setCheckUser] = useState("")
   useEffect(()=>{
-    axios.get(`http://localhost:5000/checkuser?email=${user?.email}`).
+    axios.get(`https://combat-academy-server.vercel.app/checkuser?email=${user?.email}`).
     then(res=>{
       setCheckUser(res.data.role)
     })

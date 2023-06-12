@@ -19,4 +19,5 @@
 <!-- TODO: -->
 - admin email : checkph@gmail.com
 - admin password : Phero@001
-live site Link : 
+live site Link : https://fir-facebook-practice.web.app
+server site Link : https://combat-academy-server.vercel.app/

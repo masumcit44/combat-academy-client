@@ -26,9 +26,9 @@ const ClassCard = ({ singleClass, user, loggedUser }) => {
       Swal.fire("Please Login First");
       return;
     }
-    console.log(selectedClass);
+    // console.log(selectedClass);
 
-    fetch("http://localhost:5000/selectedclass", {
+    fetch("https://combat-academy-server.vercel.app/selectedclass", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -37,7 +37,7 @@ const ClassCard = ({ singleClass, user, loggedUser }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if(data.insertedId){
           Swal.fire("Class had added");
         }

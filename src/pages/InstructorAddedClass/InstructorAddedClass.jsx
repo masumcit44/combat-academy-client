@@ -12,7 +12,7 @@ const InstructorAddedClass = () => {
   useEffect(() => {
     if(!user) return 
     axios
-      .get(`http://localhost:5000/myclass?email=${user?.email}`)
+      .get(`https://combat-academy-server.vercel.app/myclass?email=${user?.email}`)
       .then(res => {
         setAddedClass(res.data);
       })

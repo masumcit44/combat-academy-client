@@ -6,7 +6,7 @@ const PopularInstructor = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/instructor").then((res) => {
+    axios.get("https://combat-academy-server.vercel.app/instructor").then((res) => {
       const sortedInstructors = res.data.sort(
         (a, b) => b.studentsEnrolled - a.studentsEnrolled
       );
@@ -15,7 +15,7 @@ const PopularInstructor = () => {
   }, []);
 
   const images = instructors.map((instructor, index) => ({
-    src: instructor.image,
+    src: instructor.instructorImage,
     width: 1,
     height: 1,
     title: `${instructor.martialArtName} - ${instructor.instructorName}`,

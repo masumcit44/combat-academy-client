@@ -7,6 +7,7 @@ const ManageClassCard = ({ card, refetch }) => {
   const {
     availableSeats,
     image,
+    instructorImage,
     martialArtName,
     instructorName,
     instructorEmail,
@@ -18,7 +19,8 @@ const ManageClassCard = ({ card, refetch }) => {
   const [feedback, setFeedback] = useState("");
   const handleApprove = (id, click) => {
     card.click = click;
-    axios.put(`http://localhost:5000/allclasses/${id}`, card).then((res) => {
+    axios.put(`https://combat-academy-server.vercel.app/allclasses/${id}`, card).then((res) => {
+      console.log(res.data);
       if (res.data.result.modifiedCount > 0 && res.data.insertResult) {
         Swal.fire("Class approved");
         refetch();
@@ -42,7 +44,7 @@ const ManageClassCard = ({ card, refetch }) => {
   const handleOnSubmit = (id,event) => {
     event.preventDefault();
     // console.log(feedback);
-    axios.put(`http://localhost:5000/feedback/${id}`, {feedback}).then((res) => {
+    axios.put(`https://combat-academy-server.vercel.app/feedback/${id}`, {feedback}).then((res) => {
       // console.log(res.data);
       if(res.data.modifiedCount>0){
         Swal.fire("feedback sent to instructor")
@@ -63,7 +65,7 @@ const ManageClassCard = ({ card, refetch }) => {
       <td>{martialArtName}</td>
       <td>{instructorName}</td>
       <td>{instructorEmail}</td>
-      <td>{availableSeats}</td>
+      <td>{parseInt(availableSeats)-studentsEnrolled}</td>
       <td>${price}</td>
       <td className="bg-yellow-200 font-bold text-red-500">{status}</td>
       <td className="flex flex-col gap-2">

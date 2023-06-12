@@ -23,10 +23,10 @@ const SignUp = () => {
       setError("Password and confirm password do not match");
       return;
     }
-    console.log(data);
+    // console.log(data);
     createUser(data.email, data.password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         res.user.displayName = data.name;
         res.user.photoURL = data.photo;
         const user = {
@@ -34,8 +34,8 @@ const SignUp = () => {
           email: data.email,
           role: "student",
         };
-        axios.post("http://localhost:5000/users", user).then((data) => {
-          console.log(data?.data);
+        axios.post("https://combat-academy-server.vercel.app/users", user).then((data) => {
+          // console.log(data?.data);
           if (data?.data.insertedId) {
             Swal.fire({
               position: "top-end",
@@ -49,7 +49,7 @@ const SignUp = () => {
         });
         UpdateUserProfile(data.name, data.photo)
           .then(() => {
-            console.log("user updated");
+            // console.log("user updated");
           })
           .catch((error) => console.log(error));
       })
@@ -63,7 +63,7 @@ const SignUp = () => {
           email: res.user.email,
           role: "admin",
         };
-        axios.post("http://localhost:5000/users", user).then((data) => {
+        axios.post("https://combat-academy-server.vercel.app/users", user).then((data) => {
           console.log(data?.data);
           if (data?.data.insertedId) {
             Swal.fire({

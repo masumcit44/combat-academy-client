@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 const useSlider = () => {
   const { data: slider } = useQuery("slider", async () => {
-    const response = await axios.get("http://localhost:5000/topslider");
+    const response = await axios.get("https://combat-academy-server.vercel.app/topslider");
     return response.data;
   });
 

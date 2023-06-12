@@ -7,7 +7,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 const ManageUserCard = ({ user, refetch }) => {
   const { email, name, role, _id } = user;
   const handleChangeRole = (id, role) => {
-    axios.put(`http://localhost:5000/allusers/${id}`, { role }).then((res) => {
+    axios.put(`https://combat-academy-server.vercel.app/allusers/${id}`, { role }).then((res) => {
     //   console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();
